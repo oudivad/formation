@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    web-nginx:
+        image: nginx:latest
+        container_name: web-nginx
+        volumes:
+            - "./docker/www:/usr/share/nginx/html:ro"
+            - "./docker/log:/var/log/nginx"
+            - "./docker/nginx.conf:/etc/nginx/nginx.conf:ro"
+        ports:
+            - "80:80"
