@@ -1,0 +1,52 @@
+#Prerequis outils 
+https://mobaxterm.mobatek.net/download.html
+https://www.virtualbox.org/
+https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/
+
+# Debian
+# https://www.debian.org/ >
+	Obtenir Debian 
+	Image d'installation complète 
+	Télécharger les images des CD ou DVD par HTTP.
+	images officielles des CD ou DVD de la distribution stable
+	DVD amd64
+	
+# Ajout du dvd1 debian
+su -
+apt-get install sudo
+adduser dev sudo
+! Ejecter le disque iso 
+reboot
+ 
+#Add reseau privé hote on virtualbox
+sudo nano etc/network/interfaces
+
+#Ajouter les lignes ci-dessous
+auto enp0s8
+iface enp0s8 inet static
+address 192.168.56.2
+netmask 255.255.255.0
+
+
+#Verify state of network
+ip address show
+
+sudo nano /etc/apt/sources.list
+#Ajouter les lignes ci-dessous
+------------------------------------------------
+# Debian Buster, dépôt principal
+deb http://deb.debian.org/debian/ buster main
+deb-src http://deb.debian.org/debian/ buster main
+ 
+# Debian Buster, mises à jour de sécurité
+deb http://deb.debian.org/debian-security/ buster/updates main
+deb-src http://deb.debian.org/debian-security/ buster/updates main
+ 
+# Debian Buster, mises à jour "volatiles"
+deb http://deb.debian.org/debian/ buster-updates main
+deb-src http://deb.debian.org/debian/ buster-updates main
+------------------------------------------------------
+
+# Installation docker
+https://docs.docker.com/install/linux/docker-ce/debian/
+
